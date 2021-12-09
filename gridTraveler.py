@@ -4,7 +4,7 @@
 
 # Classical recursive way 
 def gridTravClassic(m,n):
-    if(m==1 and n==1): # Base case (traveler in the detination)
+    if(m==1 and n==1): # Base case (traveler in the destination)
         return 1
     if(m==0 or n==0): # Invalid grid
         return 0
@@ -28,4 +28,9 @@ def gridTravMemo(m,n, memo={}):
     return memo[key]  # Result will be the sum of going down and going right
 
 
-print(gridTravMemo(18,18)) # 2333606220
+# print(gridTravMemo(18,18)) # 2333606220
+
+# Tabulation implementation
+def gridTravTab(m,n):
+    table=[]
+    table.append([1])

@@ -14,7 +14,7 @@ def fibMemo(n, memo={}):
         return memo[n]
     if n<=2:
         return 1
-    memo[n]= fibMemo(n-1,memo)+fibMemo(n-2,memo)
+    memo[n]= fibMemo(n-1)+fibMemo(n-2)
     return memo[n]
 
 print(fibMemo(11))

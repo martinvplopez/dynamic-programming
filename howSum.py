@@ -3,7 +3,7 @@
 # Return any correct combination
 # Numbers can be used more than once and all numbers are non-negative
 # Classical recursive way
-""" def howSumClassic(targetSum, numbers): 
+def howSumClassic(targetSum, numbers):
     if(targetSum==0):
         return []
     if(targetSum<0):
@@ -12,11 +12,11 @@
         res= howSumClassic(targetSum-num,numbers)
         if( res != None):
             return res + [num]
-    return None """
+    return None
 
-""" print(howSumClassic(7,[5,3,4,7])) # 7 / 3,4
+print(howSumClassic(7,[5,3,4,7])) # 7 / 3,4
 print(howSumClassic(8,[2,3,5])) # 2,2,2,2 / 3,5
-print(howSumClassic(7,[2,4])) # None """
+print(howSumClassic(7,[2,4])) # None
 #print(howSumClassic(300,[7,14])) # None (not possible with this method)
 
 # Memoization implementation of howSum

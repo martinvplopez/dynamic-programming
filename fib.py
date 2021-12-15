@@ -5,7 +5,7 @@ def fibClassic(n):
         return 1
     return fibClassic(n-1)+fibClassic(n-2)
 
-# print(fibClassic(50)) Not possible with this solution
+#print(fibClassic(50)) #Not possible with this solution
 
 
 # Memoization implementation of Fibonacci
@@ -26,13 +26,12 @@ def fibTab(n):
     table=[]
     table.append(0)
     table.append(1)
-    for j in range(2,n+1):
-        table.append(table[j-1]+table[j-2])
+    for i in range(2, n+1):
+        table.append(table[i-2]+table[i-1])
     return table[n]
 
-
-print(fibTab(6)) # 8
-print(fibMemo(7)) # 13
+# print(fibTab(6)) # 8
+# print(fibMemo(7)) # 13
 print(fibMemo(50)) # 12586269025
 
 

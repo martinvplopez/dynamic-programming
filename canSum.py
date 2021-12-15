@@ -11,7 +11,7 @@ def canSumClassic(targetSum, numbers):
             return True
     return False
 
-print(canSumClassic(18,[5,3,4,7])) #True
+# print(canSumClassic(18,[5,3,4,7])) #True
 """ print(canSumClassic(600000,[7,14])) # Not possible """
 
 
@@ -31,6 +31,20 @@ def canSumMemo(targetSum, numbers, memo={}):
     return False
 
 
-print(canSumMemo(2000,[20]))
+# print(canSumMemo(2000,[20]))
 
 
+
+def canSumTab(targetSum, numbers):
+    table=[False] * (targetSum+1)
+    table[0]=True
+    for i in range(0,len(table)-1):
+        if table[i] is True:
+            for num in numbers:
+                if i+num < len(table):
+                    table[i+num]=True
+    return table[targetSum]
+
+print(canSumTab(2000,[20])) # True
+print(canSumTab(18,[5,3,4,7])) #True
+print(canSumTab(600000,[7,14])) # False

@@ -14,9 +14,9 @@ def howSumClassic(targetSum, numbers):
             return res + [num]
     return None
 
-print(howSumClassic(7,[5,3,4,7])) # 7 / 3,4
-print(howSumClassic(8,[2,3,5])) # 2,2,2,2 / 3,5
-print(howSumClassic(7,[2,4])) # None
+# print(howSumClassic(7,[5,3,4,7])) # 7 / 3,4
+# print(howSumClassic(8,[2,3,5])) # 2,2,2,2 / 3,5
+# print(howSumClassic(7,[2,4])) # None
 #print(howSumClassic(300,[7,14])) # None (not possible with this method)
 
 # Memoization implementation of howSum
@@ -35,9 +35,25 @@ def howSumMemo(targetSum, numbers, memo={}):
     memo[targetSum]=None
     return None
 
-print(howSumMemo(7,[5,3,4,7])) # 7 / 3,4
-print(howSumMemo(8,[2,3,5])) # 2,2,2,2 / 3,5
-print(howSumMemo(7,[2,4])) # None 
-print(howSumMemo(300,[7,14])) # None  
+# print(howSumMemo(7,[5,3,4,7])) # 7 / 3,4
+# print(howSumMemo(8,[2,3,5])) # 2,2,2,2 / 3,5
+# print(howSumMemo(7,[2,4])) # None
+# print(howSumMemo(300,[7,14])) # None
 
+
+def howSumTab(targetSum,numbers):
+    table = [None] * (targetSum + 1)
+    table[0]=[]
+    for i in range(0,len(table)):
+        if table[i] is not None:
+            for num in numbers:
+                if i + num < len(table):
+                    table[i+num]= table[i][:]
+                    table[i+num].append(num)
+    return table[targetSum]
+
+print(howSumTab(7,[5,3,4,7])) # 7 / 3,4
+print(howSumTab(8,[2,3,5])) # 2,2,2,2 / 3,5
+print(howSumTab(7,[2,4])) # None
+print(howSumTab(300,[7,14])) # None
 

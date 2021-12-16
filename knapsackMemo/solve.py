@@ -22,10 +22,10 @@ def solve_memoization(items, capacity):
             return memo[key]
         if n < 1:
             return 0
-        if w < items[n].weight:
+        if w < items[n-1].weight:
             memo[n]= t(n - 1, w)
             return memo[n]
-        memo[n]= max(t(n-1,w), t(n-1,w-items[n].weight)+items[n].value)
+        memo[n]= max(t(n-1,w), t(n-1,w-items[n-1].weight)+items[n-1].value)
         return memo[n]
 
     def fill_taken(n,w):

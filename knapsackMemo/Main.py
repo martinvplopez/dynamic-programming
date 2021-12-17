@@ -19,9 +19,5 @@ items = []
 for i in range(1, N+1):
     parts = input().split()
     items.append(Item(i, int(parts[0]), int(parts[1])))
-
-print(items)
-print(items[0].weight)
-
 value, taken = solve_memoization(items, capacity)
 print(value, taken)

@@ -7,7 +7,7 @@
 import numpy as np
 
 def solve_tabulation(items, capacity):
-    taken = [0]*len(items)
+    taken = []
     table = np.zeros((len(items)+1,capacity+1), dtype=int) # Tabla con tantas filas como elementos + 1 y tantas columnas como peso disponible + 1
     n=len(items)
     w=capacity
@@ -29,16 +29,12 @@ def solve_tabulation(items, capacity):
         k=w
         while i>0 and k>0:
             if table[i,k] != table[i-1, k]: # Si es distinto a la fila anterior has cogido el elemento
-                taken[i - 1] = 1
+                taken.insert(0,i)
                 k=k-items[i-1].weight
                 i=i-1
             else:
                 i=i-1
         return
-
-
-    
     fill_table()                # Relleno la tabla
     fill_taken(n,w)             # Genero la lista de items elegidos
-    print(table)
-    return 0, taken
+    return table[n,w], taken

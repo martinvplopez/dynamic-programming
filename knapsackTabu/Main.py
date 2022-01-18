@@ -20,5 +20,5 @@ for i in range(1, N+1):
     parts = input().split()
     items.append(Item(i, int(parts[0]), int(parts[1])))
 
-value, taken = solve_tabulation(items, capacity)
-print(value, taken)
+value= solve_tabulation(items, capacity)
+print(value)

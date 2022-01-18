@@ -14,14 +14,14 @@ def solve_tabulation(items, capacity):
 
     def fill_table():
         for i in range(1,n+1):
-            for j in range(0, w+1):
-                if items[i-1].weight <= j:
-                    if items[i-1].value + table[i-1,j-items[i-1].weight] > table[i-1,j]:
-                        table[i,j]= items[i-1].value + table[i-1,j-items[i-1].weight]
-                    else:
-                        table[i,j]=table[i-1,j]
+            for j in range(0,w+1):
+                if j<items[i-1].weight:
+                    table[i][j]=table[i-1][j]
                 else:
-                    table[i,j]=table[i-1,j]
+                    if items[i-1].value + table[i-1, j-items[i-1].weight]>table[i-1,j]:
+                        table[i][j]=items[i-1].value + table[i-1, j-items[i-1].weight]
+                    else:
+                        table[i][j] = table[i - 1][j]
         return
 
     def fill_taken(n,w):
@@ -36,5 +36,5 @@ def solve_tabulation(items, capacity):
                 i=i-1
         return
     fill_table()                # Relleno la tabla
-    fill_taken(n,w)             # Genero la lista de items elegidos
-    return table[n,w], taken
+    # fill_taken(n,w)             # Genero la lista de items elegidos
+    return table[n,w] #, taken

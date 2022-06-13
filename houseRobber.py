@@ -39,7 +39,23 @@ def houseRobberTabu(houses):
     return table[n-1], taken
 
 
+# print(houseRobberTabu([3,10,3,1,2]))
+# print(houseRobberTabu([3,10,3,1,2,14]))
 
+# Memoized implementation of house robber when the robbed houses are in a strict descending value
+def houseRobberMemoMin(houses):
+    memo={}
+    def t(n,vmin):
+        print(vmin)
+        if n<=0 or vmin>=houses[n]:
+            return 0
+        if n in memo:
+            return memo[n]
+        if vmin<houses[n]:
+            memo[n]= max(t(n-2,houses[n])+houses[n], t(n-1,vmin))
+        return memo[n]
+    return t(len(houses)-1, -1)
 
-print(houseRobberTabu([3,10,3,1,2]))
-print(houseRobberTabu([3,10,3,1,2,14]))
+print(houseRobberMemoMin([3,10,2,11]))
+# print(houseRobberMemo([3,10,3,1,2,14]))
+
